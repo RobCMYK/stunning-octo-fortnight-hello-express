@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 3000;
 //   res.send('Hello, express from render')
 // })
 app.use(express.static('public'))
-app.get('/public', (req, res) => {
+app.get('/rob', (req, res) => {
   res.sendFile('rob.html', { root: '.' })
 })
 
