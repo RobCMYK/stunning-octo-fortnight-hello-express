@@ -2,8 +2,21 @@ import express from 'express'
 
 const app = express()
 
-app.get('/', (req, res) => {
-  res.send('Kill Jacob Fielder')
+const PORT = process.env.PORT || 3000;
+
+// app.get('/', (req, res) => {
+//   res.send('Hello, express from render')
+// })
+app.use(express.static('public'))
+app.get('/public', (req, res) => {
+  res.sendFile('rob.html', { root: '.' })
 })
 
-app.listen(3000)
+// endpoints ...middleware...apis?
+// send an html file
+
+// app.listen(3000)
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+})
+//TODO: refactor to use environment port.
