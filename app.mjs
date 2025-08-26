@@ -8,8 +8,8 @@ const PORT = process.env.PORT || 3000;
 //   res.send('Hello, express from render')
 // })
 app.use(express.static('public'))
-app.get('/rob', (req, res) => {
-  res.sendFile('rob.html', { root: '.' })
+app.get('', (req, res) => {
+  res.sendFile('rob.html', { root: 'public' })
 })
 
 // endpoints ...middleware...apis?
