@@ -7,10 +7,9 @@ import { dirname } from 'path';
 
 const app = express()
 const PORT = process.env.PORT || 3000; 
-
-
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+
 // const __filename = fileURLToPath(import.meta.url);
 // const __dirname = dirname(__filename);
 
@@ -20,19 +19,24 @@ app.use(express.static(path.join(__dirname + 'public'))); // Serve static files
 
 
 // app.use(express.static(__dirname + 'public'));
-app.use(express.static(__dirname + 'public'));
 
-// app.get('/', (req, res) => {
-//   res.send('Hello Express from Render 😍😍😍. <a target="_blank" href="rob">rob</a>')
-// })
+
+app.get('/', (req, res) => {
+  res.send('Hello Express from Render 😍😍😍. <a target="_blank" href="rob">rob</a>')
+})
 
 // endpoints...middlewares...apis? 
 // send an html file
 
-app.get('/', (req, res) => {
+app.get('/rob', (req, res) => {
   // res.send('rob. <a href="/">home</a>')
   res.sendFile(path.join(__dirname, 'public','rob.html')) 
 
+})
+
+app.get('/api/rob', (req, res) => {
+  const myVar = "Hello from Rob API"
+  res.json({message: myVar})
 })
 
 
