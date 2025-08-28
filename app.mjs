@@ -16,21 +16,22 @@ app.use(express.static(path.join(__dirname, 'public')))
 // app.use(express.static(__dirname + 'public'));
 
 
-const PORT = process.env.PORT || 3000;
-
-// app.get('/', (req, res) => {
-//   res.send('Hello, express from render')
-// })
-app.use(express.static('public'))
-app.get('', (req, res) => {
-  res.sendFile('rob.html', { root: 'public' })
+app.get('/', (req, res) => {
+  res.send('Hello Express from Render 😍😍😍. <a href="barry">barry</a>')
 })
 
-// endpoints ...middleware...apis?
+// endpoints...middlewares...apis? 
 // send an html file
 
-// app.listen(3000)
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+app.get('/barry', (req, res) => {
+  // res.send('barry. <a href="/">home</a>')
+
+  res.sendFile('barry.html'); 
+
 })
-//TODO: refactor to use environment port.
+
+
+
+app.listen(PORT, () => {
+  console.log(`Example app listening on port ${PORT}`)
+})
