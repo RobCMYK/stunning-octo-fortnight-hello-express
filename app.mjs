@@ -17,16 +17,16 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 
 app.get('/', (req, res) => {
-  res.send('Hello Express from Render 😍😍😍. <a href="barry">barry</a>')
+  res.send('Hello Express from Render 😍😍😍. <a href="rob">rob</a>')
 })
 
 // endpoints...middlewares...apis? 
 // send an html file
 
-app.get('/barry', (req, res) => {
-  // res.send('barry. <a href="/">home</a>')
+app.get('/rob', (req, res) => {
+  // res.send('rob. <a href="/">home</a>')
 
-  res.sendFile('barry.html'); 
+  res.sendFile('rob.html'); 
 
 })
 
