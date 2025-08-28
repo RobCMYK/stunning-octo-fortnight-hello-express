@@ -19,7 +19,7 @@ app.use(express.static(path.join(__dirname + 'public'))); // Serve static files
 
 
 // app.use(express.static(__dirname + 'public'));
-app.use(express.static(__dirname + 'public'));
+
 
 app.get('/', (req, res) => {
   res.send('Hello Express from Render 😍😍😍. <a target="_blank" href="rob">rob</a>')
