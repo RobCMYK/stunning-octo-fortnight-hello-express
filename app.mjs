@@ -1,7 +1,7 @@
 import express from 'express'
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { dirname, join } from 'path';
+import { dirname } from 'path';
 // import { dirname } from 'node:path';
 // import { fileURLToPath } from 'node:url';
 
