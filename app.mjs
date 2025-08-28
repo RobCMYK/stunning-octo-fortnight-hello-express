@@ -22,14 +22,14 @@ app.use(express.static(path.join(__dirname + 'public'))); // Serve static files
 // app.use(express.static(__dirname + 'public'));
 app.use(express.static(__dirname + 'public'));
 
-app.get('/', (req, res) => {
-  res.send('Hello Express from Render 😍😍😍. <a target="_blank" href="rob">rob</a>')
-})
+// app.get('/', (req, res) => {
+//   res.send('Hello Express from Render 😍😍😍. <a target="_blank" href="rob">rob</a>')
+// })
 
 // endpoints...middlewares...apis? 
 // send an html file
 
-app.get('/rob', (req, res) => {
+app.get('/', (req, res) => {
   // res.send('rob. <a href="/">home</a>')
   res.sendFile(path.join(__dirname, 'public','rob.html')) 
 
