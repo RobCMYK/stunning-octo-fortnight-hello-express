@@ -31,7 +31,7 @@ app.get('/', (req, res) => {
 
 app.get('/rob', (req, res) => {
   // res.send('rob. <a href="/">home</a>')
-  res.sendFile(join(__dirname, 'public','rob.html')) 
+  res.sendFile(path.join(__dirname, 'public','rob.html')) 
 
 })
 
