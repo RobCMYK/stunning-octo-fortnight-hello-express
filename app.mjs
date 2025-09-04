@@ -37,13 +37,9 @@ async function run() {
 }
 run().catch(console.dir);
 
-// const __filename = fileURLToPath(import.meta.url);
-// const __dirname = dirname(__filename);
 
-
+app.use(express.urlencoded({ extended: true })); // Parse form data 
 app.use(express.static(path.join(__dirname + 'public'))); // Serve static files
-
-
 app.use(express.json()); // for parsing application/json
 
 
@@ -52,13 +48,11 @@ app.get('/', (req, res) => {
 
 })
 
-
 app.get('/rob', (req, res) => {
   // res.send('rob. <a href="/">home</a>')
   res.sendFile(path.join(__dirname, 'public','rob.html')) 
 
 })
-
 
 app.get('/api/rob', (req, res) => {
   const myVar = "Hello from Rob API"
@@ -66,20 +60,17 @@ app.get('/api/rob', (req, res) => {
 
 })
 
-
 app.get('/api/query', (req, res) => {
   const name = req.query.name;
   res.json({"message": `Hi ${name}, how are you?`}); 
 
 });
 
-
 app.get('/api/url/:id', (req, res) => {
   console.log("Client responds with URL param:", req.params.id);
   res.json({"message": `Hi ${req.params.id}, how are you?`});
 
 });
-
 
 app.post('/api/body', (req, res) => {
   console.log("Client responds with body:", req.body.name);
@@ -93,4 +84,27 @@ app.listen(PORT, () => {
 
 })
 
+// TRADITIONAL FORM ENDPOINTS - SIMPLIFIED
+// These handle regular HTML form submissions and redirect back
 
+// Traditional Form - Add Student (POST with form data)
+app.post('/api/students/form', async (req, res) => {
+  try {
+    const { name, age, grade } = req.body;
+    
+    // Simple validation
+    if (!name || !age || !grade) {
+      console.log('❌ Form validation failed: Missing required fields');
+      return res.redirect('/traditional-forms.html?error=missing-fields');
+    }
+
+    const student = { name, age: parseInt(age), grade };
+    const result = await db.collection('students').insertOne(student);
+    
+    console.log(`✅ Student added: ${name} (ID: ${result.insertedId})`);
+    res.redirect('/traditional-forms.html?success=student-added');
+  } catch (error) {
+    console.error('❌ Error adding student:', error.message);
+    res.redirect('/traditional-forms.html?error=database-error');
+  }
+});
