@@ -1,4 +1,4 @@
-import express from 'express'
+import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
@@ -15,14 +15,15 @@ const __dirname = dirname(__filename);
 
 
 app.use(express.static(path.join(__dirname + 'public'))); // Serve static files
-// app.use(express.static(path.join(__dirname, 'public'))); // Serve static files
 
+app.use(express.json()); // for parsing application/json
 
-// app.use(express.static(__dirname + 'public'));
+const uri = process.env.uri;
+
 
 
 app.get('/', (req, res) => {
-  res.send('Hello Express from Render 😍😍😍. <a target="_blank" href="rob">rob</a>')
+  res.send('Hello Express from Render 😍😍😍. <a href="rob">rob</a>')
 })
 
 // endpoints...middlewares...apis? 
@@ -39,7 +40,21 @@ app.get('/api/rob', (req, res) => {
   res.json({message: myVar})
 })
 
+app.get('/api/query', (req, res) => {
+  const name = req.query.name;
+  res.json({"message": `Hi ${name}, how are you?`}); 
+});
 
+app.get('/api/url/:id', (req, res) => {
+  console.log("Client responds with URL param:", req.params.id);
+  res.json({"message": `Hi ${req.params.id}, how are you?`});
+});
+
+app.post('/api/body', (req, res) => {
+  console.log("Client responds with body:", req.body.name);
+  const name = req.body.name;
+  res.json({"message": `Hi ${name}, how are you?`});
+});
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`)
