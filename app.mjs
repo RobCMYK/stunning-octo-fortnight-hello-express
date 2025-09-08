@@ -44,13 +44,19 @@ app.use(express.json()); // for parsing application/json
 
 
 app.get('/', (req, res) => {
-  res.send('Hello Express from Render 😍😍😍. <a href="rob">rob</a>')
+  res.send('Hello Express from Render 😍😍😍. <a href="rob">rob</a> <a href="trad">Trad Form</a>')
 
 })
 
 app.get('/rob', (req, res) => {
   // res.send('rob. <a href="/">home</a>')
   res.sendFile(path.join(__dirname, 'public','rob.html')) 
+
+})
+
+app.get('/trad', (req, res) => {
+  // res.send('trad. <a href="/">home</a>')
+  res.sendFile(path.join(__dirname, 'public','trad.html')) 
 
 })
 
