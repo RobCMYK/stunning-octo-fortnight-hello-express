@@ -56,7 +56,7 @@ app.get('/rob', (req, res) => {
 
 app.get('/trad', (req, res) => {
   // res.send('trad. <a href="/">home</a>')
-  res.sendFile(path.join(__dirname, 'public','trad.html')) 
+  res.sendFile(path.join(__dirname, 'public','traditional-forms.html')) 
 
 })
 
