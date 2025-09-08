@@ -39,7 +39,7 @@ run().catch(console.dir);
 
 
 app.use(express.urlencoded({ extended: true })); // Parse form data 
-app.use(express.static(path.join(__dirname + 'public'))); // Serve static files
+app.use(express.static(path.join(__dirname, 'public'))); // Serve static files
 app.use(express.json()); // for parsing application/json
 
 
