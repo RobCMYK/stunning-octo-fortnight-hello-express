@@ -38,23 +38,12 @@ connectDB();
 
 
 app.get('/', (req, res) => {
-  res.send('Hello Express from Render 😍😍😍. <a href="barry">barry</a><br><a href="student-crud.html">📝 crud time!</a><br><a href="advanced-student-manager.html">🚀 Advanced CRUD!</a>')
+  res.send('Hello Express from Render 😍😍😍. <br><a href="student-crud.html">📝 crud time!</a><br><a href="advanced-student-manager.html">🚀 Advanced CRUD!</a>')
 })
 
 // endpoints...middlewares...apis? 
 
 // send an html file
-app.get('/barry', (req, res) => {
- 
-  res.sendFile(join(__dirname, 'public', 'barry.html')) 
-
-})
-
-app.get('/api/barry', (req, res) => {
-  // res.send('barry. <a href="/">home</a>')
-  const myVar = 'Hello from server!';
-  res.json({ myVar });
-})
 
 app.get('/api/query', (req, res) => {
 
